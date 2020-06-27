@@ -14,10 +14,6 @@
 
   <nav class="nnavbar navbar-light" style="background-color: #e3f2fd;">
     <a class="navbar-brand">{% block title2 %}PWS Todo example app{% endblock %}</a>
-    <form action="{% url 'car:car_list_search' %}" method="get" class="form-inline" style="display: inline-block">
-      {# <input class="form-control mr-sm-2" type="search" id="search" placeholder="Строка поиска"> #}
-        <input name="q" type="text" class="form-control mr-sm-2" placeholder="Строка поиска">
-    </form>
 </nav>
 
     <div class="container">

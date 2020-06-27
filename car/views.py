@@ -9,10 +9,13 @@ class CarRead(ListView):
     model = Car
     template_name = 'car_list.html'
 
-    def get_queryset(self):
-        query = self.request.GET.get('q','')
-        if query == '':
-            object_list = Car.objects.all()
-        else:
-            object_list = Car.objects.filter(Q(name__icontains=query))
-        return object_list
+    def get_context_data(self, **kwargs):
+        params = self.request.GET
+        query = Q()
+        for key, value in params.items():
+            if value == '':
+                continue
+            if value and key in vars(Car):
+                query &= Q(**{''+key+'__icontains': value})
+        object_list = Car.objects.filter(query)
+        return {"object_list": Car.objects.filter(query)}

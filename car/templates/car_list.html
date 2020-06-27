@@ -5,6 +5,19 @@
 {% block title2 %}Автопарк{% endblock %}
 
 {% block main_content %}
+<form action="{% url "car:car_list_search" %}">
+    <input type="text" name="manufacturer" placeholder="Производитель">
+    <input type="text" name="model" placeholder="Модель">
+    <input type="number" name="year" placeholder="Год выпуска">
+    <select name="kpp">
+      <option value="" selected>Коробка</option>
+      <option value="0">Механика</option>
+      <option value="1">Автомат</option>
+      <option value="2">Робот</option>
+    </select>
+    <input type="text" name="color" placeholder="Цвет">
+    <input type="submit" value="Поиск">
+</form>
 <ul>
 {% for car in object_list %}
     <li><a href="{{car.id}}/">{{ car.name }}</a></li>
