@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Автомобили{% endblock %}
+{% block title2 %}Автопарк{% endblock %}
+
+{% block main_content %}
+<ul>
+{% for car in object_list %}
+    <li><a href="{{car.id}}/">{{ car.name }}</a></li>
+{% endfor %}
+</ul>
+
+{% endblock %}
